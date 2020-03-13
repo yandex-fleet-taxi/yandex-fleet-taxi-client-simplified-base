@@ -23,9 +23,6 @@ class Client implements ClientInterface
     /** @var string */
     private $partId;
 
-    /** @var string */
-    private $workRuleId;
-
     /** @var DriverToPostDataConverterInterface */
     private $driverToPostDataConverter;
 
@@ -37,7 +34,6 @@ class Client implements ClientInterface
         string $login,
         string $password,
         string $parkId,
-        string $workRuleId,
         DriverToPostDataConverterInterface $driverToPostDataConverter,
         CarToPostDataConverterInterface $carToPostDataConverter
     )
@@ -46,7 +42,6 @@ class Client implements ClientInterface
         $this->login = $login;
         $this->password = $password;
         $this->partId = $parkId;
-        $this->workRuleId = $workRuleId;
         $this->driverToPostDataConverter = $driverToPostDataConverter;
         $this->carToPostDataConverter = $carToPostDataConverter;
     }
