@@ -12,6 +12,8 @@ use Likemusic\YandexFleetTaxiClientSimplified\Entities\Base\ToPostDataConverter 
 
 class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataConverterInterface
 {
+    const DATE_FORMAT = 'Y-m-d';
+
     protected function getMapping(): array
     {
         return [];
@@ -53,7 +55,7 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
         return [
             DriverProfilePostDataKeysEnum::DRIVER_LICENSE => $this->calculateDriverLicence($attributes),
             DriverProfilePostDataKeysEnum::PHONES => $this->calculatePhones($attributes),
-            DriverProfilePostDataKeysEnum::HIRE_DATE => date('Y-d-m'),
+            DriverProfilePostDataKeysEnum::HIRE_DATE => date(self::DATE_FORMAT),
         ];
     }
 
@@ -97,7 +99,7 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
 
     private function formatDate(DateTime $dateTime): string
     {
-        return $dateTime->format('Y-m-d');
+        return $dateTime->format(self::DATE_FORMAT);
     }
 
     private function calculateDriverLicenceIssueDate(array $attributes): string
