@@ -83,8 +83,8 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
     private function getDriverLicenceCalculatedValues(array $attributes): array
     {
         return [
-            AttributesEnum::LICENCE_EXPIRATION_DATE => $this->calculateDriverLicenceExpirationDate($attributes),
-            AttributesEnum::LICENCE_ISSUE_DATE => $this->calculateDriverLicenceIssueDate($attributes),
+            DriverLicencePostDataKeysEnum::EXPIRATION_DATE => $this->calculateDriverLicenceExpirationDate($attributes),
+            DriverLicencePostDataKeysEnum::ISSUE_DATE => $this->calculateDriverLicenceIssueDate($attributes),
         ];
     }
 
