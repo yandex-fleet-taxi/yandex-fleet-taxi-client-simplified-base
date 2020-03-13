@@ -53,6 +53,7 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
         return [
             DriverProfilePostDataKeysEnum::DRIVER_LICENSE => $this->calculateDriverLicence($attributes),
             DriverProfilePostDataKeysEnum::PHONES => $this->calculatePhones($attributes),
+            DriverProfilePostDataKeysEnum::HIRE_DATE => date('Y-d-m'),
         ];
     }
 
