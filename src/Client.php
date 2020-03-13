@@ -103,7 +103,9 @@ class Client implements ClientInterface
         $parkId = $this->partId;
         $carPostData = $this->convertCarToCarPostData($car);
 
-        return $this->createCarByNativeClient($parkId, $carPostData);
+        $carData = $this->createCarByNativeClient($parkId, $carPostData);
+
+        return $carData['id'];
     }
 
     private function convertCarToCarPostData(CarInterface $car)
