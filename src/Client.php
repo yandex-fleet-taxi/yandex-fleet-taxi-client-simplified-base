@@ -8,6 +8,7 @@ use Likemusic\YandexFleetTaxiClientSimplified\Contracts\Entities\Car\ToPostDataC
 use Likemusic\YandexFleetTaxiClientSimplified\Contracts\Entities\CarInterface;
 use Likemusic\YandexFleetTaxiClientSimplified\Contracts\Entities\Driver\ToPostDataConverterInterface as DriverToPostDataConverterInterface;
 use Likemusic\YandexFleetTaxiClientSimplified\Contracts\Entities\DriverInterface;
+use Likemusic\YandexFleetTaxiClient\Contracts\LanguageInterface;
 
 class Client implements ClientInterface
 {
@@ -53,18 +54,29 @@ class Client implements ClientInterface
 
     public function createDriverWithCar(DriverInterface $driver, CarInterface $car): array
     {
-        $this->login();
+        $this->init();
         $driverId = $this->createDriver($driver);
         $carId = $this->createCar($car);
 
         return [$driverId, $carId];
     }
 
-    public function login()
+    public function init()
+    {
+        $this->login();
+        $this->client->getDashboardPageData();
+        $this->client->changeLanguage(LanguageInterface::RUSSIAN);
+    }
+
+    private function login()
     {
         $login = $this->login;
         $password = $this->password;
+        $this->loginByNativeClient($login, $password);
+    }
 
+    private function loginByNativeClient($login, $password)
+    {
         return $this->client->login($login, $password);
     }
 

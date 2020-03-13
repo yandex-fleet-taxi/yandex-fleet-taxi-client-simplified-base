@@ -8,7 +8,7 @@ use Likemusic\YandexFleetTaxiClientSimplified\Contracts\Entities\CarInterface;
 interface ClientInterface
 {
     // Login
-    public function login();
+    public function init();
 
     // Create and Link Entities
     public function createDriver(DriverInterface $driver): string;
