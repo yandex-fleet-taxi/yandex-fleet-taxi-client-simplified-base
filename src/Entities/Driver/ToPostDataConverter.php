@@ -89,7 +89,7 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
 
     private function calculateDriverLicenceExpirationDate(array $attributes): string
     {
-        $expirationDateTime = $attributes[DriverLicencePostDataKeysEnum::EXPIRATION_DATE];
+        $expirationDateTime = $attributes[AttributesEnum::LICENCE_EXPIRATION_DATE];
 
         return $this->formatDate($expirationDateTime);
     }
@@ -101,7 +101,7 @@ class ToPostDataConverter extends BaseToPostDataConverter implements ToPostDataC
 
     private function calculateDriverLicenceIssueDate(array $attributes): string
     {
-        $issueDateTime = $attributes[DriverLicencePostDataKeysEnum::ISSUE_DATE];
+        $issueDateTime = $attributes[AttributesEnum::LICENCE_ISSUE_DATE];
 
         return $this->formatDate($issueDateTime);
     }
