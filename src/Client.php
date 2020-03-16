@@ -54,7 +54,6 @@ class Client implements ClientInterface
 
     public function createDriverWithCar(DriverInterface $driver, CarInterface $car): array
     {
-        $this->init();
         $driverId = $this->createDriver($driver);
         $carId = $this->createCar($car);
 
