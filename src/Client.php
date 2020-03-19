@@ -30,6 +30,8 @@ class Client implements ClientInterface
     /** @var CarToPostDataConverterInterface */
     private $carToPostDataConverter;
 
+    private $isInitialized = false;
+
     public function __construct(
         NativeClient $client,
         string $login,
@@ -62,9 +64,14 @@ class Client implements ClientInterface
 
     public function init()
     {
+        if ($this->isInitialized) {
+            return;
+        }
+
         $this->login();
         $this->client->getDashboardPageData();
         $this->client->changeLanguage(LanguageInterface::RUSSIAN);
+        $this->isInitialized = true;
     }
 
     private function login()
